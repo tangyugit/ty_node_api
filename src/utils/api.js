@@ -1,11 +1,15 @@
 import Request from './request.js'
 
-const request = Request.getInstance(); //实例化请求类
+const zp_request = new Request('https://www.zhipin.com'); //实例化招聘请求类
 
 const api = {
-    getIndex() {
-        return request.get('/');
+    zhaopin: {
+        getIndex() { //获取首页信息
+            return zp_request.get('/');
+        }
     }
 };
 
-export default api;
+export {
+    api
+}

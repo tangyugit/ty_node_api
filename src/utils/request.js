@@ -1,14 +1,14 @@
 import axios from 'axios'
 
 class Request {
-    static getInstance() { //使用单例请求类
+    static getInstance() { //可以使用单例请求类
         if(!Request.instance){
             Request.instance = new Request();
         }
         return Request.instance;
     }
-    constructor() {
-        axios.defaults.baseURL = 'https://www.zhipin.com';
+    constructor(baseUrl) {
+        axios.defaults.baseURL = baseUrl;
         axios.defaults.timeout = 20000;
         // 添加请求拦截器
         axios.interceptors.request.use(config=> {
