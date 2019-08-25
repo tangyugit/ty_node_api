@@ -7,9 +7,11 @@ class Request {
         }
         return Request.instance;
     }
-    constructor(baseUrl) {
+    constructor(baseUrl, headers) {
         axios.defaults.baseURL = baseUrl;
         axios.defaults.timeout = 20000;
+        axios.defaults.headers = headers;
+        axios.defaults.withCredentials=true
         // 添加请求拦截器
         axios.interceptors.request.use(config=> {
             return config;
@@ -28,10 +30,11 @@ class Request {
             return Promise.reject(error);
         });
     }
-    get(url = '', params = {}) {
+    get(url = '', params = {}, headers = {}) {
         return new Promise((resolve, reject)=> {
             axios.get(url, {
-                params: { ...params, timeStamp: new Date().getTime() }
+                params: { ...params, timeStamp: new Date().getTime() },
+                headers
             }).then(res=> {
                 resolve(res);
             }).catch(err=> {
