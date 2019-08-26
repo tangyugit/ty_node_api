@@ -10,10 +10,16 @@ class Request {
     constructor(baseUrl, headers) {
         axios.defaults.baseURL = baseUrl;
         axios.defaults.timeout = 20000;
-        axios.defaults.headers = headers;
-        axios.defaults.withCredentials=true
+        axios.defaults.headers = {
+            ...headers
+        };
+        axios.defaults.withCredentials=true;
         // 添加请求拦截器
         axios.interceptors.request.use(config=> {
+            // config.proxy = { //nodejs抓包代理
+            //     host: '127.0.0.1',
+            //     port: 8888,
+            // };
             return config;
         }, error=> {
             return Promise.reject(error);
