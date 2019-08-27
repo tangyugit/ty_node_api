@@ -53,7 +53,40 @@ class ZP {
 		}
 	}
 	getDetailJobInfo = async (req, res)=> { //获取工作详情
-
+		let { jobUrl='/job_detail/7a33d7dadc6d07f003R93t26F1I~.html' } = req.query;
+		try{
+			let response = await api.zhaopin.getDetailJobInfo({jobUrl});
+			let $ = cheerio.load(response, {decodeEntities: false});
+			let detail = {
+				job_status: $('.job-status').text(),
+				job_title: $('.job-status').next().find('h1').text(),
+				job_salary: $('.job-status').next().find('.salary').text(),
+				job_condition: $('.job-status').next().next().text(),
+				job_welfare: (()=>{
+					let arr = [];
+					$('.detail-box').find('.tag-container').find('.tag-more').find('.tag-all').find('span').each((index, value)=> {
+						arr.push({ welfare: $(value).text() });
+					});
+					return arr;
+				})(),
+				person_img: $('.detail-figure').find('img').attr('src'),
+				person_name: $('.detail-figure').next().text(),
+				person_time: $('.detail-figure').next().next().text(),
+				job_desc: $('.detail-content').find('.text').text(),
+				company_introduce: $('.detail-content').find('.company-info').find('.text').text(),
+				company_name: $('.detail-content').find('.prop-item').next().find('.name').text(),
+				company_legal: $('.detail-content').find('.prop-item').next().find('.level-list').find('li').eq(0).text(),
+				company_register_money: $('.detail-content').find('.prop-item').next().find('.level-list').find('li').eq(1).text(),
+				company_time: $('.detail-content').find('.prop-item').next().find('.level-list').find('li').eq(2).text(),
+				company_type: $('.detail-content').find('.prop-item').next().find('.level-list').find('li').eq(3).text(),
+				company_state: $('.detail-content').find('.prop-item').next().find('.level-list').find('li').eq(4).text(),
+				company_adress: $('.location-address').text(),
+				company_adress_img: $('.location-address').next().find('img').attr('src')
+			};
+			res.send({code: 0, msg: "success", data: detail});
+		}catch(err){
+			res.send({code: -500, msg: '传统行业信息获取失败，请稍后再试~'});
+		}
 	}
 }
 
@@ -75,5 +108,6 @@ router.get('/city', zp.getCity);
 router.get('/position', zp.getPosition);
 router.get('/oldIndustry', zp.getOldIndustry);
 router.get('/localPositionList', zp.getLocalPositionList);
+router.get('/detailJobInfo', zp.getDetailJobInfo);
 
 export default router;
