@@ -21,12 +21,22 @@ const api = {
         },
         getLocalPositionList(params) { //获取当前某地区某职业信息的列表
             return zp_request.get(`/job_detail/`, params, { //伪造cookie
-                'Cookie': 'lastCity=101010100; _uab_collina=156663187471034079645301; __zp_stoken__=ad347L8iMSVWsTQYhhy0MOZd5p0jEw6x5EMftzA95SwxtVrLbrsfF3ioZYDPHAecm87HT8hSyoms0PzVHq6Vfj3JGw%3D%3D; __c=1566805047; __g=-; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1566631874,1566784972,1566805049; __l=l=%2Fwww.zhipin.com%2F&r=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DUYOqLcn_NeNOk-Vcu6TF6y-u-qZOPRo0Qk0mQsV1ynvjitB7UNiiOs3e0Mut4Q84%26wd%3D%26eqid%3Dfbe7381200032f30000000045d638ca8&friend_source=0&friend_source=0; __a=68878998.1566631873.1566784971.1566805047.15.3.4.15; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1566805189'
+                'Cookie': '_uab_collina=156663187471034079645301; lastCity=101190100; __c=1566954154; __g=-; __l=l=%2Fwww.zhipin.com%2F&r=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DwTg_EzNaZZtOfTJMRFUr3br68ONbwoqlCwq3EoUcbEDXry25AOEddS73WRcTfH00%26wd%3D%26eqid%3D97c91cfc00c17b91000000045d65d30b&friend_source=0&friend_source=0; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1566805049,1566892014,1566954158,1566954220; __zp_stoken__=395d1nDRUlT%2BRXhEjhq4tCOnkObmY%2FnV4lQMeasCradpDnofZpvdETMg%2BflqaiS0yLNI75KKpCb9N2CDyERtqvThrQ%3D%3D; __a=68878998.1566631873.1566892017.1566954154.70.5.7.70; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1566954302'
             });
         },
         getDetailJobInfo({ jobUrl }) { //获取某工作详情
             return zp_request.get(`${jobUrl}`, {}, { //伪造cookie
-                'Cookie': '_uab_collina=156663187471034079645301; __zp_stoken__=ad347L8iMSVWsTQYhhy0MOZd5p0jEw6x5EMftzA95SwxtVrLbrsfF3ioZYDPHAecm87HT8hSyoms0PzVHq6Vfj3JGw%3D%3D; lastCity=101190100; sid=sem_pz_bdpc_dasou_title; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1566631874,1566784972,1566805049,1566892014; __c=1566892017; __g=-; __l=l=%2Fwww.zhipin.com%2Fc101190100-p100199%2F&r=https%3A%2F%2Fwww.zhipin.com%2F%3Fsid%3Dsem_pz_bdpc_dasou_title&friend_source=0&friend_source=0; __a=68878998.1566631873.1566805047.1566892017.56.4.2.56; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1566892038'
+                'Cookie': '_uab_collina=156663187471034079645301; lastCity=101190100; __c=1566954154; __g=-; __l=l=%2Fwww.zhipin.com%2F&r=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DwTg_EzNaZZtOfTJMRFUr3br68ONbwoqlCwq3EoUcbEDXry25AOEddS73WRcTfH00%26wd%3D%26eqid%3D97c91cfc00c17b91000000045d65d30b&friend_source=0&friend_source=0; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1566805049,1566892014,1566954158,1566954220; __zp_stoken__=395d1nDRUlT%2BRXhEjhq4tCOnkObmY%2FnV4lQMeasCradpDnofZpvdETMg%2BflqaiS0yLNI75KKpCb9N2CDyERtqvThrQ%3D%3D; __a=68878998.1566631873.1566892017.1566954154.73.5.10.73; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1566955680'
+            });
+        },
+        getCompanyInfo({ companyUrl }) { //获取公司详情
+            return zp_request.get(`${companyUrl}`, {}, { //伪造cookie
+                'Cookie': '_uab_collina=156663187471034079645301; lastCity=101190100; __c=1566954154; __g=-; __l=l=%2Fwww.zhipin.com%2F&r=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DwTg_EzNaZZtOfTJMRFUr3br68ONbwoqlCwq3EoUcbEDXry25AOEddS73WRcTfH00%26wd%3D%26eqid%3D97c91cfc00c17b91000000045d65d30b&friend_source=0&friend_source=0; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1566805049,1566892014,1566954158,1566954220; __zp_stoken__=395d1nDRUlT%2BRXhEjhq4tCOnkObmY%2FnV4lQMeasCradpDnofZpvdETMg%2BflqaiS0yLNI75KKpCb9N2CDyERtqvThrQ%3D%3D; __a=68878998.1566631873.1566892017.1566954154.74.5.11.74; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1566955780'
+            });
+        },
+        getCompanyPositionList({ companyPositionUrl, ka, page }) { //获取公司招聘列表
+            return zp_request.get(`${companyPositionUrl}`, { ka, page }, { //伪造cookie
+                'Cookie': '_uab_collina=156663187471034079645301; lastCity=101190100; __c=1566954154; __g=-; __l=l=%2Fwww.zhipin.com%2F&r=https%3A%2F%2Fwww.baidu.com%2Flink%3Furl%3DwTg_EzNaZZtOfTJMRFUr3br68ONbwoqlCwq3EoUcbEDXry25AOEddS73WRcTfH00%26wd%3D%26eqid%3D97c91cfc00c17b91000000045d65d30b&friend_source=0&friend_source=0; Hm_lvt_194df3105ad7148dcf2b98a91b5e727a=1566805049,1566892014,1566954158,1566954220; __zp_stoken__=395d1nDRUlT%2BRXhEjhq4tCOnkObmY%2FnV4lQMeasCradpDnofZpvdETMg%2BflqaiS0yLNI75KKpCb9N2CDyERtqvThrQ%3D%3D; __a=68878998.1566631873.1566892017.1566954154.74.5.11.74; Hm_lpvt_194df3105ad7148dcf2b98a91b5e727a=1566955780'
             });
         }
     }
