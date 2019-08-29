@@ -1,5 +1,4 @@
 import express from 'express'
-import cheerio from 'cheerio'
 import ZP from '../utils/zhaopin.js'
 let router = express.Router();
 let zp = new ZP();

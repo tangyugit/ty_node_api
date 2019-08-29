@@ -1,4 +1,5 @@
 import { api } from './api.js'
+import cheerio from 'cheerio'
 
 export default class ZP {
 	getCity = async (req, res)=> { //获取城市信息
@@ -6,6 +7,7 @@ export default class ZP {
 			let response = await api.zhaopin.getCity();
 			res.send({code: 0, msg: "success", data: response});
 		}catch(err){
+			console.log(`getCity err: ${err}`);
 			res.send({code: -500, msg: '城市信息获取失败，请稍后再试~'});
 		}
 	}
@@ -14,6 +16,7 @@ export default class ZP {
 			let response = await api.zhaopin.getPosition();
 			res.send({code: 0, msg: "success", data: response});
 		}catch(err){
+			console.log(`getPosition err: ${err}`);
 			res.send({code: -500, msg: '职位信息获取失败，请稍后再试~'});
 		}
 	}
@@ -22,6 +25,7 @@ export default class ZP {
 			let response = await api.zhaopin.getOldIndustry();
 			res.send({code: 0, msg: "success", data: response});
 		}catch(err){
+			console.log(`getOldIndustry err: ${err}`);
 			res.send({code: -500, msg: '传统行业信息获取失败，请稍后再试~'});
 		}
 	}
@@ -46,6 +50,7 @@ export default class ZP {
 			});
 			res.send({code: 0, msg: "success", data: jobList});
 		}catch(err){
+			console.log(`getLocalPositionList err: ${err}`);
 			res.send({code: -500, msg: '当前地区职位信息列表获取失败，请稍后再试~'});
 		}
 	}
@@ -82,6 +87,7 @@ export default class ZP {
 			};
 			res.send({code: 0, msg: "success", data: detail});
 		}catch(err){
+			console.log(`getDetailJobInfo err: ${err}`);
 			res.send({code: -500, msg: '工作详情获取失败，请稍后再试~'});
 		}
 	}
@@ -146,6 +152,7 @@ export default class ZP {
 			};
 			res.send({code: 0, msg: "success", data: info});
 		}catch(err){
+			console.log(`getCompanyInfo err: ${err}`);
 			res.send({code: -500, msg: '公司招聘职位列表获取失败，请稍后再试~'});
 		}
 	}
@@ -206,6 +213,7 @@ export default class ZP {
 			};
 			res.send({code: 0, msg: "success", data: info});
 		}catch(err){
+			console.log(`getCompanyPositionList err: ${err}`);
 			res.send({code: -500, msg: '传统行业信息获取失败，请稍后再试~'});
 		}
 	}
